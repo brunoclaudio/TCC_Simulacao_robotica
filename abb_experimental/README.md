@@ -1,3 +1,6 @@
+# Importante
+Alguns arquivos deste Package foram adaptados para as necessidades do Trabalho de Conclusao de Curso do autor Bruno Franco, os arquivos foram obtidos do repositorio GIT a seguir.
+
 # ABB Experimental
 
 [![Build Status: Travis CI](https://travis-ci.com/ros-industrial/abb_experimental.svg?branch=indigo-devel)](https://travis-ci.com/ros-industrial/abb_experimental)
