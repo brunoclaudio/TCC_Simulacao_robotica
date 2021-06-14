@@ -1,0 +1,28 @@
+<launch>
+  <!-- Inicializa os nomes das juntas definidas no Moveit_setup_assistant -->
+  <rosparam command="load" file="$(find abb_irb1200_support)/config/joint_names_irb1200_5_90.yaml" />
+  
+    <!-- load the robot_description parameter before launching ROS-I nodes -->
+  <include file="$(find abb_irb1200_5_90_moveit_config)/launch/planning_context.launch" >
+    <arg name="load_robot_description" value="true" />
+  </include>
+  
+  <!-- Inicializa o nó joint_state_publisher -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <param name="/use_gui" value="false"/>
+    <rosparam param="/source_list">[/joint_states]</rosparam>
+  </node> 
+
+  <!-- Inicializa o Moveit_group que permite com que o código criado seja executado -->
+  <include file="$(find abb_irb1200_5_90_moveit_config)/launch/move_group.launch">
+    <arg name="publish_monitored_planning_scene" value="true" />
+  </include>
+
+  <!-- Inicializa o rviz -->
+  <include file="$(find abb_irb1200_5_90_moveit_config)/launch/moveit_rviz.launch">
+    <arg name="config" value="true"/>
+  </include>
+
+  <!-- Publica o estado do robo no tf-->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+</launch>

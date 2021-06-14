@@ -1,0 +1,1 @@
+/home/bruno/catkin_ws/src/abb_experimental/abb_irb1200_5_90_moveit_config/launch/move_teste_b.py
